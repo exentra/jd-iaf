@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.MDC;
 
 /**
- * Add http data (url, method, user) to log context in order to be able to trace source of log message 
+ * Add http data (url, method, user) to log context in order to be able to trace
+ * source of log message
  */
 public class LogFilter implements Filter {
 
@@ -33,14 +34,18 @@ public class LogFilter implements Filter {
 		final String userId = Optional.ofNullable(httpRequest.getUserPrincipal()).map(Principal::getName)
 				.orElse("anonymous");
 
+		final String ip = Optional.ofNullable(httpRequest.getRemoteAddr()).orElse("unknown");
+
 		MDC.put("http.url", httpRequest.getRequestURI());
 		MDC.put("http.method", httpRequest.getMethod());
+		MDC.put("client.ip", ip);
 		MDC.put("user", userId);
 
 		chain.doFilter(request, response);
 
 		MDC.remove("http.url");
 		MDC.remove("http.method");
+		MDC.remove("client.ip");
 		MDC.remove("user");
 	}
 
