@@ -34,7 +34,7 @@ public class LogFilter implements Filter {
 		final String userId = Optional.ofNullable(httpRequest.getUserPrincipal()).map(Principal::getName)
 				.orElse("anonymous");
 
-		final String ip = Optional.ofNullable(httpRequest.getHeader("x-forwarded-for")).orElse(httpRequest.getRemoteAddr());
+		final String ip = Optional.ofNullable(httpRequest.getHeader("X-Forwarded-For")).orElse(httpRequest.getRemoteAddr());
 
 		MDC.put("http.url", httpRequest.getRequestURI());
 		MDC.put("http.method", httpRequest.getMethod());
