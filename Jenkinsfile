@@ -30,7 +30,7 @@ pipeline {
                     checkout scm
 
                     withCredentials([usernamePassword(credentialsId: 'artifactory-maven', passwordVariable: 'artifactory_password', usernameVariable: 'artifactory_user')]) {
-                        sh "mvn -B -V -e -s settings.xml -Dartifactory.user=$artifactory_user -Dartifactory.password=$artifactory_password clean install deploy"
+                        sh "mvn -B -V -e -s settings.xml -Dartifactory.user=$artifactory_user -Dartifactory.password=$artifactory_password clean deploy"
                     }
                 }
             }
