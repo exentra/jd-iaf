@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<servers>
+		<server>
+			<id>artifactory-vsf</id>
+			<username>${artifactory.user}</username>
+			<password>${artifactory.password}</password>
+		</server>
+		<server>
+			<id>artifactory-vsf-internal</id>
+			<username>${artifactory.user}</username>
+			<password>${artifactory.password}</password>
+		</server>
+		<server>
+			<id>artifactory-vsf-releases</id>
+			<username>${artifactory.user}</username>
+			<password>${artifactory.password}</password>
+		</server>
+		<server>
+			<id>artifactory-vsf-snapshots</id>
+			<username>${artifactory.user}</username>
+			<password>${artifactory.password}</password>
+		</server>
+	</servers>
+
+	<mirrors>
+		<mirror>
+			<id>artifactory-vsf-internal</id>
+			<mirrorOf>!artifactory-vsf-releases,!artifactory-vsf-snapshots,central,external:*</mirrorOf>
+			<url>https://repository.deere.com/artifactory/glx-artifactory-developer-release/</url>
+		</mirror>
+	</mirrors>
+    
+    <profiles>
+        <profile>
+            <id>artifactory</id>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>http://central</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>central</id>
+                    <url>http://central</url>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>artifactory</activeProfile>
+    </activeProfiles>
+
+</settings>

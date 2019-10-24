@@ -10,7 +10,7 @@
 		<version>2.0.3.RELEASE</version>
 	</parent>
 
-	<groupId>com.deere.tools</groupId>
+	<groupId>com.deere.lx.tools</groupId>
 	<artifactId>jd-iaf</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 
@@ -28,33 +28,27 @@
 
 	<distributionManagement>
 		<repository>
-			<id>nexus-vsf-releases</id>
-			<url>http://nexus.vsf.ic.deere.com/repository/vsf-release</url>
+			<id>artifactory-vsf-releases</id>
+			<url>https://repository.deere.com/artifactory/glx-artifactory-developer-release-local/</url>
 		</repository>
 
 		<snapshotRepository>
-			<id>nexus-vsf-snapshots</id>
-			<url>http://nexus.vsf.ic.deere.com/repository/vsf-snapshot</url>
+			<id>artifactory-vsf-snapshots</id>
+			<url>https://repository.deere.com/artifactory/glx-artifactory-developer-snapshot-local/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
 	<repositories>
 		<repository>
-			<id>vsf-nexus</id>
-			<url>http://nexus.vsf.ic.deere.com/repository/maven-public</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
+			<id>artifactory-vsf</id>
+			<url>https://repository.deere.com/artifactory/glx-artifactory-developer-release/</url>
 		</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
-			<id>vsf-nexus</id>
-			<url>http://nexus.vsf.ic.deere.com/repository/maven-public</url>
+			<id>artifactory-vsf</id>
+			<url>https://repository.deere.com/artifactory/glx-artifactory-developer-release/</url>
 		</pluginRepository>
 	</pluginRepositories>
 
