@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: deere-ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 11
@@ -21,6 +21,6 @@ jobs:
           cache: maven
       - name: Build maven
         run: |
-          mvn -B -V -e -s settings.xml $MVN_COMMAND -Djansi.force=true -Dmaven.test.failure.ignore -Dartifactory.user=${{ secrets.ARTIFACTORY_USERNAME }} -Dartifactory.password=${{ secrets.ARTIFACTORY_PASSWORD }}
+          mvn -B -V -e $MVN_COMMAND -Djansi.force=true -Dmaven.test.failure.ignore
         env:
           MVN_COMMAND: ${{ github.ref_name == 'main' && 'clean deploy' || 'clean install' }}
